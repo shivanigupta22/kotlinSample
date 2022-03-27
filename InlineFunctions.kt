@@ -6,25 +6,32 @@
   // don't use inline func for larger funcs, it will pay off in performance
   // inline func should have 2-3lines only
   
-  // can declare any lambda as noinline whose code should not get copied inside the callerc func by declaring lambda as noinline
+  // can declare any lambda as noinline whose code should not get copied inside the callerc func by declaring lambda with noinline keyword
 
 class Person {
     var name: String? = null
+    //Public var is accessible inside inline func
     var lastname: String? = null
+    //private var fullName: String?= null
+    //Error : Public-API inline function cannot access non-public-API 'private final var fullName: String? defined in Person'
+    @PublishedApi internal var fullName: String?= null
+    //Need to make var internal and annotate it as @PublishedApi to access it inside inline func
 
     inline fun setFullName(firstName: () -> String, lastName: () -> String) {
-        print("${firstName()} ${lastName()}")
+        name = "${firstName()}"
+        lastname = "${lastName()}"
+        print("firstName: ${firstName()} lastName: ${lastname}\n")
+        fullName = "${firstName()} ${lastName()}"
+        print("fullname : ${fullName}")
     }
 }
 
 fun main() {
     val per = Person()
-    per.name = "xxxx"
-    per.lastname = "ttttt"
     per.setFullName({
-        return@setFullName per.name!!
+        return@setFullName "xxxx"
     }, {
-        return@setFullName per.lastname!!
+        return@setFullName "ttttt"
     })
 }
 //decompile byte code of main function
@@ -46,3 +53,4 @@ fun main() {
 //       String var4 = var5.append(var6).toString();
 //       System.out.print(var4);
 //    }
+
