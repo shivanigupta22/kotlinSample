@@ -1,0 +1,14 @@
+fun main() {
+val demo = Outer().Nested().foo() // == 1
+val demo = Outer().Nested2.foo2() // == 2
+}
+class Outer {
+    private val bar: Int = 1
+    inner class Nested {
+        fun foo() = bar // inner class can access outer class members
+      fun foo2() = 2
+    }
+    class Nested2 {
+        fun foo() = bar // will not accessible
+    }
+}
