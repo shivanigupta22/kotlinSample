@@ -1,3 +1,9 @@
+//If the val is known at compile time make it const
+//compiler will inline usages of the constant, replacing the reference to the constant with its actual value
+//However, the field will not be removed and therefore can be interacted with using reflection.?
+//constants must be a top level prop, declared with object or declared with companion object.
+
+
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 //Decompile Java code
 //  @NotNull
