@@ -24,7 +24,7 @@ fun main() {
     Derived("hello", "world")
 }
 
-// baseClasssConstructor -> baseClassInit -> baseClassPropInit -> drivedClassConstructor -> drivedClassInit -> drivedClassPropInit
+// baseClasssConstructor -> baseClassInit -> drivedClassConstructor -> drivedClassInit
 
 //output 
 // Constructing the derived class("hello", "world")
