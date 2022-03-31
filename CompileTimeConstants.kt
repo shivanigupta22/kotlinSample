@@ -15,9 +15,10 @@ object Obj {
         print("hii\n")
     }
 }
-// Object is a singleton class
+// object is a declaration (singleton class)
 // It internally returns INSTANCE of the class when needed
-
+//The initialization of an object declaration is thread-safe and done on first access.
+//Object declarations are initialized lazily, when accessed for the first time.
 
 //Decompiled java code
 // public final class Obj {
@@ -52,8 +53,10 @@ class COM {
     }
 }
 // companion object is a static final inner class
-//companion object should be used only when you want to define something at class level and want to use at referance of class only
-//avoid using constant declarations using companion object
+// companion object should be used only when you want to define something at class level and want to use at referance of class only
+// avoid using constant declarations using companion object
+// A companion object is initialized when the corresponding class is loaded (resolved) that matches the semantics of a Java static initializer.
+
 
 
 //Decompiled java code
