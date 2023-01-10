@@ -1,26 +1,30 @@
 fun main() {
-  val ns:String = "test"
+    
+  var ns:String? = null    
     //let scope
-    // used to group execution, null checks and return its result
+    // used to group execution, null checks and return lamba result
     // can be used using it
     println(ns?.let {
-    it.contains("e") // returns result to LHS
-})// true
+    it.contains("e")// returns result to LHS
+    it.replace("e","eee")
+})// returns teeest
     
     //run scope
-    //executes a code block and returns its result
-    // can be used using this
-    println(ns?.run {                                                 
+    //executes a code block and returns lamba result
+    // can be used by using this and can access member functions
+    println(ns?.run {
+      	
         println("\tlength = $length") 
-        println("\tstring = $this")                           
+        println("\tstring = ${this.replace("t","4")}")                           
         length                                               
-    })
+    })//returns 4
     
     //with scope
-    //doesn't return anything & doesn't check for null
+    //doesn't provide anyway for checking null at top level
    	//can access member functions without needing it or this
     println(with(ns) {
-    println("${toString()}:$length")   
+   // println("${this?.toString()}:$length")   
+    this?.length
 })
     //apply scope
     // executes a block of code on an object and returns the object itself.
